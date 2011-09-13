@@ -9,7 +9,7 @@
 Summary:	A library of functions for manipulating PNG image format files
 Name:		libpng12
 Version:	1.2.46
-Release:	2
+Release:	3
 Epoch:		2
 License:	zlib
 Group:		System/Libraries
@@ -49,7 +49,7 @@ Summary:	Development tools for programs to manipulate PNG image format files
 Group:		Development/C
 Requires:	%{libname} = %{EVRD}
 Requires:	zlib-devel
-Conflicts:	png-devel >= 1.5
+Conflicts:	png-devel >= 2:1.5
 Provides:	png-devel = %{EVRD}
 
 %description -n	%{develname}
@@ -66,7 +66,7 @@ Summary:	Development static libraries
 Group:		Development/C
 Requires:	%{develname} = %{EVRD}
 Requires:	zlib-devel
-Conflicts:	png-static-devel >= 1.5
+Conflicts:	png-static-devel >= 2:1.5
 Provides:	png-static-devel = %{EVRD}
 
 %description -n	%{staticname}
