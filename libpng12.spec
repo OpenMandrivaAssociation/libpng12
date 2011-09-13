@@ -39,7 +39,6 @@ files.
 %package -n	%{libname}
 Summary:	A library of functions for manipulating PNG image format files
 Group:		System/Libraries
-Provides:	%{libname_orig} = %{epoch}:%{version}-%{release}
 
 %description -n	%{libname}
 This package contains the library needed to run programs dynamically
