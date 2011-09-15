@@ -4,8 +4,6 @@
 %define develname %mklibname png -d %{major}
 %define staticname %mklibname png -d -s %{major}
 
-%bcond_without	uclibc
-
 Summary:	A library of functions for manipulating PNG image format files
 Name:		libpng12
 Version:	1.2.46
@@ -22,9 +20,6 @@ Patch0:		libpng-%{version}-apng.patch.gz
 Patch1:		libpng-1.2.36-pngconf-setjmp.patch
 Patch2:		libpng-1.2.44-CVE-2008-6218.diff
 BuildRequires: 	zlib-devel
-%if %{with uclibc}
-BuildRequires:	uClibc-devel
-%endif
 
 %description
 The libpng package contains a library of functions for creating and
@@ -88,17 +83,6 @@ This package contains the source code of %{libname_orig}.
 
 %build
 export CONFIGURE_TOP=`pwd`
-%if %{with uclibc}
-mkdir -p uclibc
-cd uclibc
-%configure2_5x	CC="%{uclibc_cc}" \
-		CFLAGS="%{uclibc_cflags}" \
-		--enable-shared=no \
-		--enable-static=yes \
-		--with-pic
-%make
-cd ..
-%endif
 
 mkdir -p shared
 cd shared
@@ -112,10 +96,6 @@ make -C shared check
 
 %install
 %makeinstall_std -C shared
-%if %{with uclibc}
-install -m644 uclibc/.libs/libpng12.a -D %{buildroot}%{uclibc_root}%{_libdir}/libpng12.a
-ln -s libpng12.a %{buildroot}%{uclibc_root}%{_libdir}/libpng.a
-%endif
 
 install -d %{buildroot}%{_mandir}/man{3,5}
 install -m0644 {libpng,libpngpf}.3 %{buildroot}%{_mandir}/man3
@@ -147,9 +127,6 @@ rm -rf %{buildroot}{%{_prefix}/man,%{_libdir}/lib*.la}
 
 %files -n %{staticname}
 %{_libdir}/libpng*.a
-%if %{with uclibc}
-%{uclibc_root}%{_libdir}/libpng*.a
-%endif
 
 %files -n %{libname}-source
 %{_prefix}/src/%{libname_orig}
