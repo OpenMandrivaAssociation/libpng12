@@ -22,6 +22,7 @@ Source:		http://prdownloads.sourceforge.net/libpng/libpng-%{version}.tar.xz
 Patch0:		libpng-%{version}-apng.patch.gz
 Patch1:		libpng-1.2.36-pngconf-setjmp.patch
 Patch2:		libpng-1.2.44-CVE-2008-6218.diff
+Patch3:		libpng-1.2.46-fix-libdir-pkgconfig-lib64-conflict.patch
 BuildRequires: 	zlib-devel
 BuildRequires: 	automake
 
@@ -93,6 +94,7 @@ This package contains the source code of %{libname_orig}.
 %patch0 -p1 -b .apng
 %patch1 -p0 -b .pngconf-setjmp
 %patch2 -p0 -b .CVE-2008-6218
+%patch3 -p1 -b .lib64~
 ./autogen.sh
 
 %build
@@ -131,9 +133,6 @@ for symlink in %{_bindir}/libpng-config %{_libdir}/pkgconfig/libpng.pc \
 	rm -f %{buildroot}$symlink
 done	
 
-#multiarch
-%multiarch_binaries %{buildroot}%{_bindir}/libpng12-config
-
 %files -n %{libname}
 %{_libdir}/libpng12.so.%{major}*
 
@@ -143,7 +142,6 @@ done
 %files -n %{develname}
 %doc *.txt example.c README TODO CHANGES
 %{_bindir}/libpng12-config
-%{multiarch_bindir}/libpng12-config
 %{_includedir}/*
 %{_libdir}/libpng12.so
 %{_libdir}/pkgconfig/*
@@ -156,5 +154,3 @@ done
 
 %files -n %{libname}-source
 %{_prefix}/src/%{libname_orig}
-
-
