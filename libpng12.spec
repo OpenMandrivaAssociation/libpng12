@@ -95,11 +95,10 @@ This package contains the source code of %{libname_orig}.
 %patch1 -p0 -b .pngconf-setjmp
 %patch2 -p0 -b .CVE-2008-6218
 %patch3 -p1 -b .lib64~
-./autogen.sh
+autoreconf -ivf
 
 %build
 export CONFIGURE_TOP=`pwd`
-autoreconf -ivf
 
 mkdir -p shared
 cd shared
