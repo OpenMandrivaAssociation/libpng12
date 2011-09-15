@@ -57,7 +57,6 @@ Summary:	Development tools for programs to manipulate PNG image format files
 Group:		Development/C
 Requires:	%{libname} = %{EVRD}
 Requires:	zlib-devel
-Conflicts:	png-devel >= 2:1.5
 Provides:	png-devel = %{EVRD}
 %rename		%{oldlib}-devel
 
@@ -75,7 +74,6 @@ Summary:	Development static libraries
 Group:		Development/C
 Requires:	%{develname} = %{EVRD}
 Requires:	zlib-devel
-Conflicts:	png-static-devel >= 2:1.5
 Provides:	png-static-devel = %{EVRD}
 %rename		%{oldlib}-static-devel
 
@@ -115,14 +113,23 @@ make -C shared check
 %makeinstall_std -C shared
 
 install -d %{buildroot}%{_mandir}/man{3,5}
-install -m0644 {libpng,libpngpf}.3 %{buildroot}%{_mandir}/man3
-install -m0644 png.5 %{buildroot}%{_mandir}/man5/png3.5
+install -m644 libpng.3 %{buildroot}%{_mandir}/man3/libpng12.3
+install -m644 libpngpf.3 %{buildroot}%{_mandir}/man3/libpngpf12.3
+install -m644 png.5 %{buildroot}%{_mandir}/man5/png12.5
 
 install -d %{buildroot}%{_prefix}/src/%{libname_orig}
 cp -a *.c *.h %{buildroot}%{_prefix}/src/%{libname_orig}
 
 # remove unpackaged files
 rm -rf %{buildroot}{%{_prefix}/man,%{_libdir}/lib*.la}
+
+# remove conflicting symlinks
+for symlink in %{_bindir}/libpng-config %{_libdir}/pkgconfig/libpng.pc \
+    %{_libdir}/libpng.so %{_includedir}/{png,pngconf}.h \
+	%{_mandir}/man3/{libpng,libpngpf}.3 \
+	%{_mandir}/man5/png.5; do
+	rm -f %{buildroot}$symlink
+done	
 
 #multiarch
 %multiarch_binaries %{buildroot}%{_bindir}/libpng12-config
@@ -135,14 +142,14 @@ rm -rf %{buildroot}{%{_prefix}/man,%{_libdir}/lib*.la}
 
 %files -n %{develname}
 %doc *.txt example.c README TODO CHANGES
-%{_bindir}/libpng-config
 %{_bindir}/libpng12-config
 %{multiarch_bindir}/libpng12-config
 %{_includedir}/*
 %{_libdir}/libpng12.so
-%{_libdir}/libpng.so
 %{_libdir}/pkgconfig/*
-%{_mandir}/man?/*
+%{_mandir}/man3/libpng12.3*
+%{_mandir}/man3/libpngpf12.3*
+%{_mandir}/man5/png12.5*
 
 %files -n %{staticname}
 %{_libdir}/libpng*.a
