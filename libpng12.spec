@@ -1,13 +1,16 @@
 %define libname_orig libpng
-%define major 3
+%define major 0
 %define libname	%mklibname png %{major}
 %define develname %mklibname png -d %{major}
 %define staticname %mklibname png -d -s %{major}
 
+%define	oldmajor 3
+%define	oldlib %mklibname png %{oldmajor}
+
 Summary:	A library of functions for manipulating PNG image format files
 Name:		libpng12
 Version:	1.2.46
-Release:	4
+Release:	5
 Epoch:		2
 License:	zlib
 Group:		System/Libraries
@@ -35,10 +38,19 @@ files.
 %package -n	%{libname}
 Summary:	A library of functions for manipulating PNG image format files
 Group:		System/Libraries
+Conflicts:	%{oldlib} <= 2:1.2.46-4
 
 %description -n	%{libname}
 This package contains the library needed to run programs dynamically
 linked with libpng.
+
+%package -n	%{oldlib}
+Summary:	A library of functions for manipulating PNG image format files
+Group:		System/Libraries
+
+%description -n	%{oldlib}
+This package contains the library needed to run programs dynamically
+linked with really old versions of libpng.
 
 %package -n	%{develname}
 Summary:	Development tools for programs to manipulate PNG image format files
@@ -47,6 +59,7 @@ Requires:	%{libname} = %{EVRD}
 Requires:	zlib-devel
 Conflicts:	png-devel >= 2:1.5
 Provides:	png-devel = %{EVRD}
+%rename		%{oldlib}-devel
 
 %description -n	%{develname}
 The libpng-devel package contains the header files and libraries
@@ -64,6 +77,8 @@ Requires:	%{develname} = %{EVRD}
 Requires:	zlib-devel
 Conflicts:	png-static-devel >= 2:1.5
 Provides:	png-static-devel = %{EVRD}
+%rename		%{oldlib}-static-devel
+
 
 %description -n	%{staticname}
 Libpng development static libraries.
@@ -113,8 +128,10 @@ rm -rf %{buildroot}{%{_prefix}/man,%{_libdir}/lib*.la}
 %multiarch_binaries %{buildroot}%{_bindir}/libpng12-config
 
 %files -n %{libname}
-%{_libdir}/*.so.%{major}*
-%{_libdir}/libpng12.so.*
+%{_libdir}/libpng12.so.%{major}*
+
+%files -n %{oldlib}
+%{_libdir}/libpng.so.%{oldmajor}*
 
 %files -n %{develname}
 %doc *.txt example.c README TODO CHANGES
