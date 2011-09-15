@@ -83,6 +83,7 @@ This package contains the source code of %{libname_orig}.
 
 %build
 export CONFIGURE_TOP=`pwd`
+autoreconf -ivf
 
 mkdir -p shared
 cd shared
