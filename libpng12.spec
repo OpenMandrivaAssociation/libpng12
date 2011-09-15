@@ -20,6 +20,7 @@ Patch0:		libpng-%{version}-apng.patch.gz
 Patch1:		libpng-1.2.36-pngconf-setjmp.patch
 Patch2:		libpng-1.2.44-CVE-2008-6218.diff
 BuildRequires: 	zlib-devel
+BuildRequires: 	automake
 
 %description
 The libpng package contains a library of functions for creating and
