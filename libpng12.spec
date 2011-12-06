@@ -2,7 +2,6 @@
 %define major 0
 %define libname	%mklibname png %{major}
 %define develname %mklibname png -d %{major}
-%define staticname %mklibname png -d -s %{major}
 
 %define	oldmajor 3
 %define	oldlib %mklibname png %{oldmajor}
@@ -10,7 +9,7 @@
 Summary:	A library of functions for manipulating PNG image format files
 Name:		libpng12
 Version:	1.2.46
-Release:	6
+Release:	7
 Epoch:		2
 License:	zlib
 Group:		System/Libraries
@@ -56,7 +55,7 @@ linked with really old versions of libpng.
 %package -n	%{develname}
 Summary:	Development tools for programs to manipulate PNG image format files
 Group:		Development/C
-Requires:	%{libname} = %{EVRD}
+Requires:	%{libname} >= %{EVRD}
 Requires:	zlib-devel
 Provides:	png-devel = %{EVRD}
 %rename		%{oldlib}-devel
@@ -69,18 +68,6 @@ Graphics) library.
 If you want to develop programs which will manipulate PNG image format
 files, you should install libpng-devel.  You'll also need to install the
 libpng package.
-
-%package -n	%{staticname}
-Summary:	Development static libraries
-Group:		Development/C
-Requires:	%{develname} = %{EVRD}
-Requires:	zlib-devel
-Provides:	png-static-devel = %{EVRD}
-%rename		%{oldlib}-static-devel
-
-
-%description -n	%{staticname}
-Libpng development static libraries.
 
 %package -n	%{libname}-source
 Summary:	Source code of %{libname_orig}
@@ -121,16 +108,16 @@ install -m644 png.5 %{buildroot}%{_mandir}/man5/png12.5
 install -d %{buildroot}%{_prefix}/src/%{libname_orig}
 cp -a *.c *.h %{buildroot}%{_prefix}/src/%{libname_orig}
 
-# remove unpackaged files
-rm -rf %{buildroot}{%{_prefix}/man,%{_libdir}/lib*.la}
-
 # remove conflicting symlinks
 for symlink in %{_bindir}/libpng-config %{_libdir}/pkgconfig/libpng.pc \
     %{_libdir}/libpng.so %{_includedir}/{png,pngconf}.h \
 	%{_mandir}/man3/{libpng,libpngpf}.3 \
 	%{_mandir}/man5/png.5; do
 	rm -f %{buildroot}$symlink
-done	
+done
+
+# cleanup
+rm -rf %{buildroot}{%{_prefix}/man,%{_libdir}/*.*a}
 
 %files -n %{libname}
 %{_libdir}/libpng12.so.%{major}*
@@ -147,9 +134,6 @@ done
 %{_mandir}/man3/libpng12.3*
 %{_mandir}/man3/libpngpf12.3*
 %{_mandir}/man5/png12.5*
-
-%files -n %{staticname}
-%{_libdir}/libpng*.a
 
 %files -n %{libname}-source
 %{_prefix}/src/%{libname_orig}
