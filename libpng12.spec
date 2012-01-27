@@ -9,7 +9,7 @@
 Summary:	A library of functions for manipulating PNG image format files
 Name:		libpng12
 Version:	1.2.46
-Release:	7
+Release:	8
 Epoch:		2
 License:	zlib
 Group:		System/Libraries
@@ -72,6 +72,7 @@ libpng package.
 %package -n	%{libname}-source
 Summary:	Source code of %{libname_orig}
 Group:		Development/C
+Provides:	%{name}-source = %{EVRD}
 
 %description -n	%{libname}-source
 This package contains the source code of %{libname_orig}.
