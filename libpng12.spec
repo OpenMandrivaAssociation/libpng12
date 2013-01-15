@@ -8,7 +8,7 @@
 Summary:	A library of functions for manipulating PNG image format files
 Name:		libpng12
 Version:	1.2.49
-Release:	4
+Release:	5
 Epoch:		2
 License:	zlib
 Group:		System/Libraries
@@ -21,6 +21,7 @@ Patch0:		libpng-%{version}-apng.patch.gz
 Patch1:		libpng-1.2.36-pngconf-setjmp.patch
 Patch2:		libpng-1.2.44-CVE-2008-6218.diff
 Patch3:		libpng-1.2.46-fix-libdir-pkgconfig-lib64-conflict.patch
+Patch4:		libpng-automake-1.13.patch
 BuildRequires:	zlib-devel
 BuildRequires:	automake
 
@@ -57,6 +58,7 @@ linked with really old versions of libpng.
 %patch1 -p0 -b .pngconf-setjmp
 %patch2 -p0 -b .CVE-2008-6218
 %patch3 -p1 -b .lib64~
+%patch4 -p1 -b .automake113~
 autoreconf -ivf
 
 %build

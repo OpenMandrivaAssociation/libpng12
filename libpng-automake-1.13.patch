@@ -1,0 +1,11 @@
+--- libpng-1.2.49/configure.ac.bero	2013-01-16 00:35:36.176072675 +0100
++++ libpng-1.2.49/configure.ac	2013-01-16 00:35:42.228999966 +0100
+@@ -31,7 +31,7 @@ PNGLIB_RELEASE=49
+ dnl End of version number stuff
+ 
+ AC_CONFIG_SRCDIR([pngget.c])
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS([config.h])
+ 
+ # Checks for programs.
+ AC_PROG_CC
