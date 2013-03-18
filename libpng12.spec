@@ -1,6 +1,7 @@
 %define libname_orig libpng
 %define major 0
-%define libname %mklibname png %{major}
+%define libname %mklibname png12
+# %{major}
 
 %define oldmajor 3
 %define oldlib %mklibname png %{oldmajor}
@@ -13,7 +14,7 @@ Epoch:		2
 License:	zlib
 Group:		System/Libraries
 URL:		http://www.libpng.org/pub/png/libpng.html
-Source:		http://prdownloads.sourceforge.net/libpng/libpng-%{version}.tar.xz
+Source0:	http://prdownloads.sourceforge.net/libpng/libpng-%{version}.tar.xz
 # (tpg) APNG support http://littlesvr.ca/apng/
 # (tpg) http://hp.vector.co.jp/authors/VA013651/freeSoftware/apng.html
 # (tpg) http://sourceforge.net/projects/libpng-apng/ <- use this one
