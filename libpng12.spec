@@ -9,7 +9,7 @@
 Summary:	A library of functions for manipulating PNG image format files
 Name:		libpng12
 Version:	1.2.49
-Release:	6
+Release:	7
 Epoch:		2
 License:	zlib
 Group:		System/Libraries
