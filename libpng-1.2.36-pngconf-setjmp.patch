@@ -1,5 +1,5 @@
---- pngconf.h.pngconf-setjmp	2009-05-08 03:53:11.000000000 +0200
-+++ pngconf.h	2009-05-08 03:54:33.000000000 +0200
+--- ./pngconf.h.pngconf-setjmp	2009-05-08 03:53:11.000000000 +0200
++++ ./pngconf.h	2009-05-08 03:54:33.000000000 +0200
 @@ -332,8 +332,8 @@
         /* If you encounter a compiler error here, see the explanation
          * near the end of INSTALL.
