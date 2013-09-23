@@ -1,40 +1,7 @@
-diff -Naur libpng-1.2.49/scripts/libpng-config.in libpng-1.2.49.oden/scripts/libpng-config.in
---- libpng-1.2.49/scripts/libpng-config.in	2012-03-29 06:46:55.000000000 +0200
-+++ libpng-1.2.49.oden/scripts/libpng-config.in	2012-04-01 09:04:23.428329410 +0200
-@@ -14,12 +14,12 @@
- version="@PNGLIB_VERSION@"
- prefix="@prefix@"
- exec_prefix="@exec_prefix@"
--libdir="@libdir@"
-+libdir=""
- includedir="@includedir@/libpng@PNGLIB_MAJOR@@PNGLIB_MINOR@"
- libs="-lpng@PNGLIB_MAJOR@@PNGLIB_MINOR@"
- all_libs="-lpng@PNGLIB_MAJOR@@PNGLIB_MINOR@ @LIBS@"
- I_opts="-I${includedir}"
--L_opts="-L${libdir}"
-+L_opts=""
- R_opts=""
- cppflags=""
- ccopts="@LIBPNG_NO_MMX@"
-diff -Naur libpng-1.2.49/scripts/libpng.pc-configure.in libpng-1.2.49.oden/scripts/libpng.pc-configure.in
---- libpng-1.2.49/scripts/libpng.pc-configure.in	2012-03-29 06:46:55.000000000 +0200
-+++ libpng-1.2.49.oden/scripts/libpng.pc-configure.in	2012-04-01 09:04:23.428329410 +0200
-@@ -1,11 +1,10 @@
- prefix=@prefix@
- exec_prefix=@exec_prefix@
--libdir=@libdir@
- includedir=@includedir@/libpng@PNGLIB_MAJOR@@PNGLIB_MINOR@
- 
- Name: libpng
- Description: Loads and saves PNG files
- Version: @PNGLIB_VERSION@
--Libs: -L${libdir} -lpng@PNGLIB_MAJOR@@PNGLIB_MINOR@
-+Libs: -lpng@PNGLIB_MAJOR@@PNGLIB_MINOR@
- Libs.private: @LIBS@
- Cflags: -I${includedir} @LIBPNG_NO_MMX@
-diff -Naur libpng-1.2.49/scripts/libpng.pc.in libpng-1.2.49.oden/scripts/libpng.pc.in
---- libpng-1.2.49/scripts/libpng.pc.in	2012-03-29 06:46:55.000000000 +0200
-+++ libpng-1.2.49.oden/scripts/libpng.pc.in	2012-04-01 09:04:50.290893843 +0200
+diff --git a/scripts/libpng.pc.in b/scripts/libpng.pc.in
+index 3ee7186..b005ff4 100644
+--- a/scripts/libpng.pc.in
++++ b/scripts/libpng.pc.in
 @@ -1,10 +1,9 @@
  prefix=@prefix@
  exec_prefix=@exec_prefix@
@@ -43,7 +10,7 @@ diff -Naur libpng-1.2.49/scripts/libpng.pc.in libpng-1.2.49.oden/scripts/libpng.
  
  Name: libpng
  Description: Loads and saves PNG files
- Version: 1.2.49
+ Version: 1.2.50
 -Libs: -L${libdir} -lpng12
 +Libs: -lpng12
  Cflags: -I${includedir}

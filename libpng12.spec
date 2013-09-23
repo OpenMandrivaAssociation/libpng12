@@ -9,8 +9,8 @@
 Summary:	A library of functions for manipulating PNG image format files
 Name:		%{oname}%{api}
 Epoch:		2
-Version:	1.2.49
-Release:	8
+Version:	1.2.50
+Release:	1
 License:	zlib
 Group:		System/Libraries
 Url:		http://www.libpng.org/pub/png/libpng.html
@@ -18,6 +18,7 @@ Source0:	http://prdownloads.sourceforge.net/libpng/%{oname}-%{version}.tar.xz
 # (tpg) APNG support http://littlesvr.ca/apng/
 # (tpg) http://hp.vector.co.jp/authors/VA013651/freeSoftware/apng.html
 # (tpg) http://sourceforge.net/projects/libpng-apng/ <- use this one
+# (fedya) http://downloads.sourceforge.net/project/libpng-apng/libpng12/%{version}/libpng-%{version}-apng.patch.gz 
 Patch0:		libpng-%{version}-apng.patch.gz
 Patch1:		libpng-1.2.36-pngconf-setjmp.patch
 Patch2:		libpng-1.2.44-CVE-2008-6218.diff
