@@ -57,6 +57,7 @@ linked with really old versions of libpng.
 %prep
 %setup -qn %{oname}-%{version}
 %apply_patches
+touch scripts/libpng.pc-configure.ac
 autoreconf -ivf
 
 %build
@@ -65,9 +66,10 @@ export CONFIGURE_TOP=`pwd`
 mkdir -p shared
 cd shared
 CFLAGS="%{optflags} -O3 -funroll-loops" \
-%configure2_5x \
+%configure \
 	--with-pic \
 	--disable-static
+
 %make
 cd ..
 
