@@ -1,6 +1,2 @@
-removed_sources:
-  libpng-1.2.49.tar.xz: 0984ab46fbfa5a34ca8d98958eebe5fb52b22294
 sources:
-  libpng-1.2.49-apng.patch.gz: 3e0f01cefcd836bbb9c22b1f135b3cb3a46d62d0
   libpng-1.2.50.tar.xz: 3ac9c32fc08804d4a1858cb5d02c6d0fb55ede37
-  libpng-1.2.50-apng.patch.gz: 5e2c8965a4b4b0d6789fa9ab8cbde415f29955f7

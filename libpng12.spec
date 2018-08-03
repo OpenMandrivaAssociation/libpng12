@@ -19,7 +19,7 @@ Source0:	http://prdownloads.sourceforge.net/libpng/%{oname}-%{version}.tar.xz
 # (tpg) http://hp.vector.co.jp/authors/VA013651/freeSoftware/apng.html
 # (tpg) http://sourceforge.net/projects/libpng-apng/ <- use this one
 # (fedya) http://downloads.sourceforge.net/project/libpng-apng/libpng12/%{version}/libpng-%{version}-apng.patch.gz 
-Patch0:		libpng-%{version}-apng.patch.gz
+Patch0:		libpng-%{version}-apng.patch
 Patch1:		libpng-1.2.36-pngconf-setjmp.patch
 Patch2:		libpng-1.2.44-CVE-2008-6218.diff
 Patch3:		libpng-1.2.46-fix-libdir-pkgconfig-lib64-conflict.patch
