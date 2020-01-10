@@ -56,7 +56,7 @@ linked with really old versions of libpng.
 
 %prep
 %setup -qn %{oname}-%{version}
-%apply_patches
+%autopatch -p1
 touch scripts/libpng.pc-configure.ac
 autoreconf -ivf
 
