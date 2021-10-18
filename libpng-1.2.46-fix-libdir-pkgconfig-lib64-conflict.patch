@@ -1,7 +1,6 @@
-diff --git a/scripts/libpng.pc.in b/scripts/libpng.pc.in
-index 3ee7186..b005ff4 100644
---- a/scripts/libpng.pc.in
-+++ b/scripts/libpng.pc.in
+diff -up libpng-1.2.59/scripts/libpng.pc.in.4~ libpng-1.2.59/scripts/libpng.pc.in
+--- libpng-1.2.59/scripts/libpng.pc.in.4~	2021-10-18 02:11:10.842967915 +0200
++++ libpng-1.2.59/scripts/libpng.pc.in	2021-10-18 02:11:33.568945065 +0200
 @@ -1,10 +1,9 @@
  prefix=@prefix@
  exec_prefix=@exec_prefix@
@@ -10,7 +9,7 @@ index 3ee7186..b005ff4 100644
  
  Name: libpng
  Description: Loads and saves PNG files
- Version: 1.2.50
+ Version: 1.2.59
 -Libs: -L${libdir} -lpng12
 +Libs: -lpng12
  Cflags: -I${includedir}
